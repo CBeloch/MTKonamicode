@@ -49,6 +49,8 @@
 				display: block;
 			}
 			#foot { text-align: right; }
+			
+			#yourKeys{ color: blue;}
 		</style>
 	</head>
 	<body>
@@ -71,9 +73,11 @@
 				});
 			</code>
 			
-			<h2>Try it here</h2>
+			<h2>Try it here (press the same keys as on the image)</h2>
 			
 			Perform the Konamicode on this site, but be carefull if you have "Type to search" active in your Safari then it will not work
+		
+			<p id="yourKeys"></p>
 		
 			<div id="foot">by <a href="http://blog.cbeloch.de" title="cbeloch.de Blog" target="_blank">cbeloch</a></div>
 		</div>
@@ -84,6 +88,9 @@
 			var kc = new MTKonamicode({
 				onWin: function(){
 					window.location = "http://www.youtube.com/watch?v=oHg5SJYRHA0";
+				},
+				onKeyup: function(key,keys){
+					document.id('yourKeys').set('text',keys.join(' '));
 				}
 			});
 		</script>

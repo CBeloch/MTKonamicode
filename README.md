@@ -21,3 +21,13 @@ Use Code like this:
 			alert("You successfully entered the konamicode! Go and get a cookie!");
 		}
 	});
+
+Other example with custom keys
+
+	#JS
+	new MTKonamicode({
+		keys: ['up','down'],
+		onWin: function(){
+			alert('Do it!');
+		}
+	});

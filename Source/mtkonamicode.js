@@ -24,8 +24,9 @@ var MTKonamicode = new Class({
 	Implements: [Options, Events],
 	
 	options: {
-		theKonamiCode: ["up","up","down","down","left","right","left","right","b","a"]/*,
-		onWin: $empty*/
+		keys: ["up","up","down","down","left","right","left","right","b","a"]/*,
+		onWin: $empty,
+		onKeyup: $empty*/
 	},
 	
 	enteredCode: [],
@@ -35,10 +36,10 @@ var MTKonamicode = new Class({
 		
 		keyboardEvent = new Keyboard({
 			caseSensitive: true,
-			parentClass: this,
+//			parentClass: this,
 			events: (function(){
 				events = {};
-				this.options.theKonamiCode.each(function(key){
+				this.options.keys.each(function(key){
 					if(events[key]) return; // Do not add the event twice
 					events[key] = this.checkKonami.bindWithEvent(this);
 				}.bind(this));
@@ -56,16 +57,19 @@ var MTKonamicode = new Class({
 		}
 		this.enteredCode.push(key);
 		
-		var code = this.options.theKonamiCode.slice(0, this.enteredCode.length);
+		var code = this.options.keys.slice(0, this.enteredCode.length);
 		
 		if(this.enteredCode.join(",") != code.join(","))
 		{
 			// Code gone wrong... Resetting the Keylog
 			this.enteredCode = [];
-		} else if (this.enteredCode.join(",") == this.options.theKonamiCode.join(",")) {
-			// YOU WIN! Entered Konamicode successfully
-			this.fireEvent('win');
-			this.enteredCode = []; // Reset Keylog to run konamicode again
+		} else {
+			this.fireEvent('keyup',[key,this.enteredCode]);
+			if (this.enteredCode.join(",") == this.options.keys.join(",")) {
+				// YOU WIN! Entered Konamicode successfully
+				this.fireEvent('win');
+				this.enteredCode = []; // Reset Keylog to run konamicode again
+			}
 		}
 	}
 });
