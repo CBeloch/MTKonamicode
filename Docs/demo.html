@@ -13,21 +13,72 @@
 				background: rgb(222, 219, 219);
 				padding: 0px;
 				margin: 0px;
+				
+				font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+				font-size: 13px;
 			}
+			a { color: #6eb7e9; text-decoration: none; font-weight: bold; }
+			img { border: 0px; }
 			#header {
 				background: url(images/bg_head.png) repeat-x;
 				height: 100px;
+				line-height: 100px;
 				border-bottom: 1px solid black;
+				padding-left: 30px;
 			}
-			#header img {
-				margin-left: 30px;
+			#header a {
+				color:  white;
+				font-weight: bold;
+				text-decoration: none;
 			}
+			#twitter {
+				float: right;
+				width: 200px;
+			}
+			#content {
+				padding: 20px;
+				margin: 20px auto;
+				width: 760px;
+				background-color: white;
+				-webkit-box-shadow: 2px 2px 5px black;
+			}
+			code {
+				border: 1px dashed black;
+				padding: 10px;
+				background-color: #CCCCCC;
+				display: block;
+			}
+			#foot { text-align: right; }
 		</style>
 	</head>
 	<body>
 		<div id="header">
 			<img src="images/logo.png" alt="MooTools Konamicode">
+			
+			<div id="twitter">
+				<a href="http://twitter.com/C_BHole"><img src="images/twitter.png" alt="Follow Me" style="margin-bottom: -10px"> Follow Me</a>
+			</div>
 		</div>
+		
+		<div id="content">
+			<h2>Usage</h2>
+			
+			<code>
+				var kc = new MTKonamicode({
+					onWin: function(){
+						alert("You've won a cookie!");
+					}
+				});
+			</code>
+			
+			<h2>Try it here</h2>
+			
+			Perform the Konamicode on this site, but be carefull if you have "Type to search" active in your Safari then it will not work
+		
+			<div id="foot">by <a href="http://blog.cbeloch.de" title="cbeloch.de Blog" target="_blank">cbeloch</a></div>
+		</div>
+		
+		
 	
 		<script type="text/javascript">
 			var kc = new MTKonamicode({
