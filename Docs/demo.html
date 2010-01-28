@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>MooLive Demo</title>
+		
+		<script type="text/javascript" src="mootools-core.js"></script>
+		<script type="text/javascript" src="mootools-more.js"></script>
+
+		<script type="text/javascript" src="../Source/mtkonamicode.js"></script>
+		
+		<style>
+			html, body {
+				background: rgb(222, 219, 219);
+				padding: 0px;
+				margin: 0px;
+			}
+			#header {
+				background: url(images/bg_head.png) repeat-x;
+				height: 100px;
+				border-bottom: 1px solid black;
+			}
+			#header img {
+				margin-left: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">
+			<img src="images/logo.png" alt="MooTools Konamicode">
+		</div>
+	
+		<script type="text/javascript">
+			var myLive = new MTKonamicode({
+				onWin: function(){
+					window.location = "http://www.youtube.com/watch?v=oHg5SJYRHA0";
+				}
+			});
+		</script>
+	</body>
+</html>
