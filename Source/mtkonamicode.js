@@ -65,7 +65,7 @@ var MTKonamicode = new Class({
 		} else if (this.enteredCode.join(",") == this.options.theKonamiCode.join(",")) {
 			// YOU WIN! Entered Konamicode successfully
 			this.fireEvent('win');
-//			this.enteredCode = []; // Reset Keylog to run konamicode again
+			this.enteredCode = []; // Reset Keylog to run konamicode again
 		}
 	}
 });
