@@ -2,11 +2,12 @@
 ---
 
 script: mtkonamicode.js
-version: 0.9
+version: 0.9.3
 description: know the Konamicode? Use this thing to include a MooTools powered easteregg in your website / webapp
 license: MIT-style
 authors:
 - Christopher Beloch
+- Arian Stolwij (0.9 -> 0.9.3 code improvements)
 
 requires: 
   core:1.2.4:
