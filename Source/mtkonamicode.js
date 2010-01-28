@@ -23,68 +23,49 @@ provides: [MTKonamicode]
 var MTKonamicode = new Class({
 	Implements: [Options, Events],
 	
-	theKonamiCode: ["up","up","down","down","left","right","left","right","b","a"],
+	options: {
+		theKonamiCode: ["up","up","down","down","left","right","left","right","b","a"]/*,
+		onWin: $empty*/
+	},
+	
 	enteredCode: [],
 	
 	initialize: function(options){
 		this.setOptions(options);
+		
 		keyboardEvent = new Keyboard({
 			caseSensitive: true,
 			parentClass: this,
-			events: {
-				'up': this.checkKonamiUp,
-				'down': this.checkKonamiDown,
-				'left': this.checkKonamiLeft,
-				'right': this.checkKonamiRight,
-				'b': this.checkKonamiB,
-				'a': this.checkKonamiA
-				
-			}
+			events: (function(){
+				events = {};
+				this.options.theKonamiCode.each(function(key){
+					if(events[key]) return; // Do not add the event twice
+					events[key] = this.checkKonami.bindWithEvent(this);
+				}.bind(this));
+				// Return the object with all the events
+				return events;
+			}.bind(this))()
 		}).activate();
-		
 	},
 	
-	checkKonami: function(key){
-		this.enteredCode.extend([key]);
+	checkKonami: function(event){
+		if(event.key){
+			var key = event.key;
+		}else{
+			return;
+		}
+		this.enteredCode.include(key);
 		
-		enteredSize = this.enteredCode.length;
-		shortenedKonamiCode = this.theKonamiCode.slice(0, enteredSize);
+		var code = this.options.theKonamiCode.slice(0, this.enteredCode.length);
 		
-		if(this.enteredCode.join(",") != shortenedKonamiCode.join(","))
+		if(this.enteredCode.join(",") != code.join(","))
 		{
 			// Code gone wrong... Resetting the Keylog
 			this.enteredCode = [];
-		}
-		
-		if(this.enteredCode.join(",") == this.theKonamiCode.join(","))
-		{
+		} else if (this.enteredCode.join(",") == this.theKonamiCode.join(",")) {
 			// YOU WIN! Entered Konamicode successfully
 			this.fireEvent('win');
 			this.enteredCode = []; // Reset Keylog to run konamicode again
 		}
-	},
-	
-	checkKonamiUp: function(){
-		this.options.parentClass.checkKonami("up");
-	},
-	
-	checkKonamiDown: function(){
-		this.options.parentClass.checkKonami("down");
-	},
-	
-	checkKonamiLeft: function(){
-		this.options.parentClass.checkKonami("left");
-	},
-	
-	checkKonamiRight: function(){
-		this.options.parentClass.checkKonami("right");
-	},
-	
-	checkKonamiB: function(){
-		this.options.parentClass.checkKonami("b");
-	},
-	
-	checkKonamiA: function(){
-		this.options.parentClass.checkKonami("a");
 	}
 });

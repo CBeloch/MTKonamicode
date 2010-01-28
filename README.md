@@ -4,6 +4,8 @@ MTKonamicode
 MTKonamicode gives you a small little 'Feature' for your Website.
 There are some sites having Konamicodes in it (check http://www.konamicodesites.com) and here is the MooTools way to integrate it in your website / webapp
 
+Check http://en.wikipedia.org/wiki/Konami_Code for more info
+
 ![Screenshot](http://mtkonamicode.cbeloch.de/Docs/images/logo.png)
 
 How to use
