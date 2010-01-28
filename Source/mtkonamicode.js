@@ -54,7 +54,7 @@ var MTKonamicode = new Class({
 		}else{
 			return;
 		}
-		this.enteredCode.include(key);
+		this.enteredCode.push(key);
 		
 		var code = this.options.theKonamiCode.slice(0, this.enteredCode.length);
 		
@@ -62,10 +62,10 @@ var MTKonamicode = new Class({
 		{
 			// Code gone wrong... Resetting the Keylog
 			this.enteredCode = [];
-		} else if (this.enteredCode.join(",") == this.theKonamiCode.join(",")) {
+		} else if (this.enteredCode.join(",") == this.options.theKonamiCode.join(",")) {
 			// YOU WIN! Entered Konamicode successfully
 			this.fireEvent('win');
-			this.enteredCode = []; // Reset Keylog to run konamicode again
+//			this.enteredCode = []; // Reset Keylog to run konamicode again
 		}
 	}
 });
