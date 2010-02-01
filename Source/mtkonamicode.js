@@ -7,7 +7,7 @@ description: know the Konamicode? Use this thing to include a MooTools powered e
 license: MIT-style
 authors:
 - Christopher Beloch
-- Arian Stolwij (0.9 -> 0.9.3 code improvements)
+- Arian Stolwijk (0.9 -> 0.9.3 code improvements)
 
 requires: 
   core:1.2.4:
